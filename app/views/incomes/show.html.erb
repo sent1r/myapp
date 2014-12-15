@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @income.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @income.category_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @income.name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @income.cost %>
+</p>
+
+<%= link_to 'Edit', edit_income_path(@income) %> |
+<%= link_to 'Back', incomes_path %>

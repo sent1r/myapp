@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @category.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Is income:</strong>
+  <%= @category.is_income %>
+</p>
+
+<%= link_to 'Редактировать', edit_category_path(@category) %> |
+<%= link_to 'К списку категорий', categories_path %>

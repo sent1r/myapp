@@ -1,0 +1,30 @@
+<h1>Список транзакций <%= @anc %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incomes.each do |income| %>
+      <tr>
+        <td><%= income.category_id %></td>
+        <td><%= income.name %></td>
+        <td><%= income.cost %></td>
+        <!--<td><%= link_to 'Show', income %></td>-->
+        <td><%= link_to 'Редактировать', edit_income_path(income) %></td>
+        <td><%= link_to 'Удалить', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить новую запись', new_income_path %>
+<%= link_to 'На главную', controller: "home", action: "index" %>

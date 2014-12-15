@@ -1,0 +1,29 @@
+<h1>Перечень категорий</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th>Доход/расход</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.is_income %></td>
+        <!--<td><%= link_to 'Show', category %></td>-->
+        <td><%= link_to 'Редактировать', edit_category_path(category) %></td>
+        <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Создать категорию', new_category_path %>
+<%= link_to 'На главную', controller: "home", action: "index" %>
+
