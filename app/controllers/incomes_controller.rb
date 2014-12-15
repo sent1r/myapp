@@ -7,9 +7,11 @@ class IncomesController < ApplicationController
     if params[:in_out] == "1"
       @incomes = Income.joins(:category).where("categories.is_income = 1")
       @anc = "(Доходы)"
+      #@cat = Category.where("categories.is_income = 1")
     elsif params[:in_out] == "2"
       @incomes = Income.joins(:category).where("categories.is_income = 2")
       @anc = "(Расходы)"
+      #@cat = Category.where("categories.is_income = 2")
     else
       @incomes = Income.all
       @anc = "(Все)"
