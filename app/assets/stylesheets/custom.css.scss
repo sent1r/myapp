@@ -1,0 +1,19 @@
+@import "bootstrap";
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 10px;
+}
+
+table {
+  @extend .table;
+  @extend .table-bordered;
+}
+
+.actions input {
+  @extend .btn;
+  @extend .btn-success;
+}

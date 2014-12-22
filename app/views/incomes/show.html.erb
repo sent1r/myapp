@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Пользователь:</strong>
   <%= @income.user_id %>
 </p>
 
 <p>
-  <strong>Category:</strong>
+  <strong>Категория:</strong>
   <%= @income.category_id %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Имя транзакции:</strong>
   <%= @income.name %>
 </p>
 
 <p>
-  <strong>Cost:</strong>
+  <strong>Значение:</strong>
   <%= @income.cost %>
 </p>
 
-<%= link_to 'Edit', edit_income_path(@income) %> |
-<%= link_to 'Back', incomes_path %>
+<%= link_to 'Редактировать', edit_income_path(@income) %> |
+<%= link_to 'Назад', incomes_path %>

@@ -1,10 +1,11 @@
 <h1>Перечень категорий</h1>
+
 <table>
   <thead>
     <tr>
       <th>Наименование</th>
       <th>Доход/расход</th>
-      <th colspan="3"></th>
+      <th>Действия</th>
     </tr>
   </thead>
 
@@ -17,10 +18,10 @@
         <% else %>
             <td>Расходы</td>
         <% end %>
-        <td><%= @is_income %></td>
-        <!--<td><%= link_to 'Show', category %></td>-->
-        <td><%= link_to 'Редактировать', edit_category_path(category) %></td>
-        <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td>
+          <%= link_to 'Редактировать', edit_category_path(category) %>
+          <%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Вы уверены?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
