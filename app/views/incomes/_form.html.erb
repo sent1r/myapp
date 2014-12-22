@@ -15,17 +15,18 @@
 
   </div>
   <div class="field">
+    <%= f.label 'Категория' %><br>
     <%= f.select(:category_id, @cat.collect {|p| [p.name, p.id]}) %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label 'Наименование' %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :cost %><br>
+    <%= f.label 'Величина'%><br>
     <%= f.text_field :cost %>
   </div>
   <div class="actions">
-    <%= f.submit "Обновить" %>
+    <%= f.submit "Подтвердить" %>
   </div>
 <% end %>

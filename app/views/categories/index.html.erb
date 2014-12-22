@@ -1,5 +1,8 @@
 <h1>Перечень категорий</h1>
-
+<p>
+  <%= link_to 'Создать категорию', new_category_path %>
+  <%= link_to 'На главную', controller: "home", action: "index" %>
+</p>
 <table>
   <thead>
     <tr>
@@ -26,9 +29,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Создать категорию', new_category_path %>
-<%= link_to 'На главную', controller: "home", action: "index" %>
-

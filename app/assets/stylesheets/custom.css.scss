@@ -16,4 +16,21 @@ table {
 .actions input {
   @extend .btn;
   @extend .btn-success;
+  margin: 10px 5px;
+}
+
+#user_nav {
+  background: gray;
+  padding: 5px;
+  color: white;
+}
+#user_nav a {
+  color: yellow;
+}
+.main_menu {
+  border: 1px solid black;
+  padding: 10px 5px;
+}
+.main_menu a {
+  color: blue;
 }

@@ -1,4 +1,8 @@
 <h1>Список транзакций <%= @anc %></h1>
+<p>
+  <%= link_to 'Добавить новую запись', new_income_path %>
+  <%= link_to 'На главную', controller: "home", action: "index" %>
+</p>
 <table>
   <thead>
     <tr>
@@ -27,8 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Добавить новую запись', new_income_path %>
-<%= link_to 'На главную', controller: "home", action: "index" %>
