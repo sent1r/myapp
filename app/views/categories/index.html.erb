@@ -1,5 +1,4 @@
 <h1>Перечень категорий</h1>
-
 <table>
   <thead>
     <tr>
@@ -13,7 +12,12 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= category.is_income %></td>
+        <% if category.is_income == 1 %>
+            <td>Доходы</td>
+        <% else %>
+            <td>Расходы</td>
+        <% end %>
+        <td><%= @is_income %></td>
         <!--<td><%= link_to 'Show', category %></td>-->
         <td><%= link_to 'Редактировать', edit_category_path(category) %></td>
         <td><%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Вы уверены?' } %></td>

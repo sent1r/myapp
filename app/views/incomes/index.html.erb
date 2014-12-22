@@ -1,6 +1,4 @@
 <h1>Список транзакций <%= @anc %></h1>
-<%= puts @cat %>
-
 <table>
   <thead>
     <tr>
@@ -14,8 +12,12 @@
   <tbody>
     <% @incomes.each do |income| %>
       <tr>
-        <td><%= income.category_id %></td>
-        <td><%= income.name %></td>
+        <% @cat_names.each do |cat_name| %>
+            <% if  income.category_id == cat_name.id %>
+                <td><%= cat_name.name %></td>
+            <% end %>
+        <% end %>
+        <td><%= link_to income.name, incomes_path(i_name: income.name) %>>
         <td><%= income.cost %></td>
         <!--<td><%= link_to 'Show', income %></td>-->
         <td><%= link_to 'Редактировать', edit_income_path(income) %></td>

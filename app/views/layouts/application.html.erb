@@ -10,10 +10,15 @@
 
 <div id="user_nav">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not You?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    Вы вошли как <%= current_user.email %>. Ошибка?
+    <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+       <div>
+          <%= link_to 'Категории', categories_path %>
+          <%= link_to 'Доходы', incomes_path(in_out: 1) %>
+          <%= link_to 'Расходы', incomes_path(in_out: 2) %>
+       </div>
   <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Зарегистрироваться", new_user_registration_path %> или <%= link_to "Войти", new_user_session_path %>
   <% end %>
 </div>
 
