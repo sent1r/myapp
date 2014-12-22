@@ -13,7 +13,7 @@ class IncomesController < ApplicationController
       @anc = "(Расходы)"
       @@mycat = Category.where("categories.is_income = 2 AND categories.user_id="+current_user.id.to_s)
     elsif params[:i_name]
-      @incomes = Income.where("incomes.name =\""+params[:i_name].to_s+"\"")
+      @incomes = Income.where("incomes.name =\""+params[:i_name].to_s+"\" AND incomes.user_id="+current_user.id.to_s)
     else
       @incomes = Income.where("incomes.user_id="+current_user.id.to_s)
       @anc = "(Все)"
