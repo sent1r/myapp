@@ -1,0 +1,14 @@
+<h1>Просмотр отчета за период</h1>
+
+<%= render 'form' %>
+
+<div id="report">
+    <% if @in_incomes %>
+        <p>Ваши суммарные <b>Доходы</b> за период c <br /><%= @date_from %> по <%= @date_to %></p>
+        <p><b><%= @in_sum %></b></p><br />
+    <% end %>
+    <% if @out_incomes %>
+        <p>Ваши суммарные <b>Расходы</b> за период c <br /><%= @date_from %> по <%= @date_to %></p>
+        <p><b><%= @out_sum %></b></p><br />
+    <% end %>
+</div>
