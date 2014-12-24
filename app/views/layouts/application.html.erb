@@ -16,7 +16,8 @@
       <div class="main_menu">
         <%= link_to '| Категории ', categories_path %>
         <%= link_to '| Доходы ', incomes_path(in_out: 1) %>
-        <%= link_to '| Расходы |', incomes_path(in_out: 2) %>
+        <%= link_to '| Расходы ', incomes_path(in_out: 2) %>
+        <%= link_to '| Отчеты |', controller: "report", action: "index" %>
       </div>
   <% else %>
     <%= link_to "Зарегистрироваться", new_user_registration_path %> или <%= link_to "Войти", new_user_session_path %>

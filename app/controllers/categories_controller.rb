@@ -1,8 +1,10 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
+  #Каждый пользователь должен видеть только свои категории, доходы и расходы. Для этого используем current_user
   def index
     @categories = Category.where(user_id: current_user)
   end

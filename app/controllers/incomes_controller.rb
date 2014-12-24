@@ -1,8 +1,12 @@
 class IncomesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
+  #Переменная @ncomes может содержать только строки, относящиеся к доодам, расходам, группе одноименных затрат
+  #Переменная @anc используется для информирования пользователя на какой странице шаблона он находится (при отрисовке)
+  #@@mycat описывается ниже, метод new
   def index
     if params[:in_out] == "1"
       @incomes = Income.joins(:category).where("categories.is_income = 1 AND incomes.user_id="+current_user.id.to_s)
@@ -29,12 +33,13 @@ class IncomesController < ApplicationController
     respond_with(@income)
   end
 
+  #Переменная @@mycat призвана усовершенствовать вид вывода списка операций (В зависимости от id категории выводить ее имя)
   def new
     @income = Income.new
-    if @@mycat.nil?
-      @cat = Category.where("categories.user_id="+current_user.id.to_s)
-    else
+    if @@mycat
       @cat = @@mycat
+    else
+      @cat = Category.where("categories.user_id="+current_user.id.to_s)
     end
     respond_with(@income)
   end

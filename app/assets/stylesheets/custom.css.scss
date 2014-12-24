@@ -38,3 +38,9 @@ table {
 #links span {
   padding: 10px;
 }
+
+#report {
+  @extend .col-md-4;
+  border: 2px solid green;
+  padding-top: 10px;
+}
