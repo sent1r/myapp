@@ -9,17 +9,17 @@ class IncomesController < ApplicationController
   #@@mycat описывается ниже, метод new
   def index
     if params[:in_out] == "1"
-      @incomes = Income.joins(:category).where("categories.is_income = 1 AND incomes.user_id="+current_user.id.to_s)
+      @incomes = Income.joins(:category).where("categories.is_income = ?", 1).where(user_id: current_user.id)
       @anc = "(Доходы)"
-      @@mycat = Category.where("categories.is_income = 1 AND categories.user_id="+current_user.id.to_s)
+      @@mycat = Category.where("categories.is_income = ?", 1).where(user_id: current_user.id)
     elsif params[:in_out] == "2"
-      @incomes = Income.joins(:category).where("categories.is_income = 2 AND incomes.user_id="+current_user.id.to_s)
+      @incomes = Income.joins(:category).where("categories.is_income = ?", 2).where(user_id: current_user.id)
       @anc = "(Расходы)"
-      @@mycat = Category.where("categories.is_income = 2 AND categories.user_id="+current_user.id.to_s)
+      @@mycat = Category.where("categories.is_income = ?", 2).where(user_id: current_user.id)
     elsif params[:i_name]
-      @incomes = Income.where(name: params[:i_name], user_id: current_user.id).all
+      @incomes = Income.where(name: params[:i_name], user_id: current_user.id)
     else
-      @incomes = Income.where("incomes.user_id="+current_user.id.to_s)
+      @incomes = Income.where(user_id: current_user.id)
       @anc = "(Все)"
       @@mycat = nil
     end
@@ -39,13 +39,13 @@ class IncomesController < ApplicationController
     if @@mycat
       @cat = @@mycat
     else
-      @cat = Category.where("categories.user_id="+current_user.id.to_s)
+      @cat = Category.where(user_id: current_user.id)
     end
     respond_with(@income)
   end
 
   def edit
-    @cat = Category.where("categories.user_id="+current_user.id.to_s)
+    @cat = Category.where(user_id: current_user.id)
   end
 
   def create
