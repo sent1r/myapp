@@ -9,7 +9,7 @@ class ReportController < ApplicationController
       @date_from = '2014-12-22 00:0:00'
       @date_to = Date.today.to_s+' 24:00:00'
     else
-      @date_from = @@reports[:date_from].to_s+'00:00:00'
+      @date_from = @@reports[:date_from].to_s+' 00:00:00'
       @date_to = @@reports[:date_to].to_s+' 24:00:00'
     end
 
