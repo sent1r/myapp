@@ -21,7 +21,7 @@
                 <td><%= cat_name.name %></td>
             <% end %>
         <% end %>
-        <td><%= link_to income.name, incomes_path(i_name: income.name) %>
+        <td><%= link_to income.name, controller: "incomes", action: "index", i_name: income.name %>
         <td><%= income.cost %></td>
         <td>
           <%= link_to 'Редактировать', edit_income_path(income) %>
