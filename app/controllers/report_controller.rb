@@ -17,7 +17,7 @@ class ReportController < ApplicationController
     @@reports = nil
 
     #Only Incomes or only expences
-    @in_incomes = Income1.joins(:category).where("categories.is_income = 1 AND incomes.created_at > ? AND
+    @in_incomes = Income.joins(:category).where("categories.is_income = 1 AND incomes.created_at > ? AND
     incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
     @out_incomes = Income.joins(:category).where("categories.is_income = 2 AND incomes.created_at > ? AND
     incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
