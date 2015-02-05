@@ -1,11 +1,11 @@
 <%= form_for(@report) do |f| %>
     <div class="datefield_from">
       <%= f.label 'Начало периода' %><br>
-      <%= f.text_field :date_from, :id => "date_from", :name => "date_from" %>
+      <%= f.text_field :date_from, :id => "date_from", :name => "date_from", :value => @date_from.to_date %>
     </div>
     <div class="datefield_to">
       <%= f.label 'Конец периода' %><br>
-      <%= f.text_field :date_to, :id => "date_to", :name => "date_to" %>
+      <%= f.text_field :date_to, :id => "date_to", :name => "date_to", :value => @date_to.to_date %>
     </div>
     <div class="actions">
       <%= f.submit "Получить" %>

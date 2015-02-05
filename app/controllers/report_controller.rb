@@ -6,21 +6,21 @@ class ReportController < ApplicationController
   def index
     @report = ''
     if @@reports.nil?
-      @date_from = '2014-12-22 00:0:00'
-      @date_to = Date.today.to_s+' 24:00:00'
+      @date_from = '2014-12-22 00:00:00'
+      @date_to = Date.today.to_s+' 23:59:59'
     else
       @date_from = @@reports[:date_from].to_s+' 00:00:00'
-      @date_to = @@reports[:date_to].to_s+' 24:00:00'
+      @date_to = @@reports[:date_to].to_s+' 23:59:59'
     end
 
     #Сбрасываю переменную, чтобы исключить запоминание ранее введенных данных
     @@reports = nil
 
     #Выбираю строки, относящиеся только к расходам/доходам
-    @in_incomes = Income.joins(:category).where("categories.is_income = 1 AND incomes.created_at > ?
-    AND incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
-    @out_incomes = Income.joins(:category).where("categories.is_income = 2 AND incomes.created_at > ?
-    AND incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
+    @in_incomes = Income.joins(:category).where("categories.is_income = 1 AND incomes.created_at > ? AND
+    incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
+    @out_incomes = Income.joins(:category).where("categories.is_income = 2 AND incomes.created_at > ? AND
+    incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
 
     #Произвожу расчет суммы всех расходов/доходов
     @out_sum = 0

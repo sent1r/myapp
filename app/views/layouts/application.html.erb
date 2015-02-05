@@ -14,10 +14,11 @@
     <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
 </div>
       <div class="main_menu">
-        <%= link_to '| Категории ', categories_path %>
-        <%= link_to '| Доходы ', incomes_path(in_out: 1) %>
-        <%= link_to '| Расходы ', incomes_path(in_out: 2) %>
-        <%= link_to '| Отчеты |', controller: "report", action: "index" %>
+        <span>|</span><%= link_to ' Категории ', categories_path %>
+        <span>|</span><%= link_to ' Доходы ', incomes_path(in_out: 1) %>
+        <span>|</span><%= link_to ' Расходы ', incomes_path(in_out: 2) %>
+        <span>|</span><%= link_to ' Отчеты ', controller: "report", action: "index" %>
+        <span>|</span>
       </div>
   <% else %>
     <%= link_to "Зарегистрироваться", new_user_registration_path %> или <%= link_to "Войти", new_user_session_path %>
