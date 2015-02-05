@@ -10,18 +10,18 @@
 <div class="container">
 <div id="user_nav">
   <% if user_signed_in? %>
-    Вы вошли как <%= current_user.email %>.
-    <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+    You signed in as <%= current_user.email %>.
+    <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
 </div>
       <div class="main_menu">
-        <span>|</span><%= link_to ' Категории ', categories_path %>
-        <span>|</span><%= link_to ' Доходы ', incomes_path(in_out: 1) %>
-        <span>|</span><%= link_to ' Расходы ', incomes_path(in_out: 2) %>
-        <span>|</span><%= link_to ' Отчеты ', controller: "report", action: "index" %>
+        <span>|</span><%= link_to ' Categories ', categories_path %>
+        <span>|</span><%= link_to ' Incomes ', incomes_path(in_out: 1) %>
+        <span>|</span><%= link_to ' Expences ', incomes_path(in_out: 2) %>
+        <span>|</span><%= link_to ' Reports ', controller: "report", action: "index" %>
         <span>|</span>
       </div>
   <% else %>
-    <%= link_to "Зарегистрироваться", new_user_registration_path %> или <%= link_to "Войти", new_user_session_path %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Log in", new_user_session_path %>
       </div>
   <% end %>
 

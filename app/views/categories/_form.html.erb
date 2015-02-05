@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Наименование' %><br>
+    <%= f.label 'Category name' %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.select(:is_income, options_for_select([["Доходы","1"], ["Расходы", "2"]]),{include_blank:"Выберите категорию"}) %>
+    <%= f.select(:is_income, options_for_select([["Incomes","1"], ["Expences", "2"]]),{include_blank:"Select main category"}) %>
   </div>
   <div class="actions">
-    <%= f.submit "Подтвердить"%>
+    <%= f.submit "Submit"%>
   </div>
 <% end %>

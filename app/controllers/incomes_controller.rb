@@ -4,23 +4,23 @@ class IncomesController < ApplicationController
 
   respond_to :html
 
-  #Переменная @ncomes может содержать только строки, относящиеся к доодам, расходам, группе одноименных затрат
-  #Переменная @anc используется для информирования пользователя на какой странице шаблона он находится (при отрисовке)
-  #@@mycat описывается ниже, метод new
+  #@ncomes variable includes only incomes data, expences data, transactions with the same name
+  #@anc variable includes information about active page and action for viewer
+  #@@mycat includes category name which are recived from table categories by id
   def index
     if params[:in_out] == "1"
       @incomes = Income.joins(:category).where("categories.is_income = ?", 1).where(user_id: current_user.id)
-      @anc = "(Доходы)"
+      @anc = "(Incomes)"
       @@mycat = Category.where("categories.is_income = ?", 1).where(user_id: current_user.id)
     elsif params[:in_out] == "2"
       @incomes = Income.joins(:category).where("categories.is_income = ?", 2).where(user_id: current_user.id)
-      @anc = "(Расходы)"
+      @anc = "(Expences)"
       @@mycat = Category.where("categories.is_income = ?", 2).where(user_id: current_user.id)
     elsif params[:i_name]
       @incomes = Income.where(name: params[:i_name], user_id: current_user.id)
     else
       @incomes = Income.where(user_id: current_user.id)
-      @anc = "(Все)"
+      @anc = "(All transactions)"
       @@mycat = nil
     end
 
@@ -33,7 +33,6 @@ class IncomesController < ApplicationController
     respond_with(@income)
   end
 
-  #Переменная @@mycat призвана усовершенствовать вид вывода списка операций (В зависимости от id категории выводить ее имя)
   def new
     @income = Income.new
     if @@mycat

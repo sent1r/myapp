@@ -1,14 +1,14 @@
 <h1>Перечень категорий</h1>
 <p id="links">
-  <span><%= link_to 'Создать категорию', new_category_path %></span>
-  <span><%= link_to 'На главную', controller: "home", action: "index" %></span>
+  <span><%= link_to 'Create category', new_category_path %></span>
+  <span><%= link_to 'Home', controller: "home", action: "index" %></span>
 </p>
 <table>
   <thead>
     <tr>
-      <th>Наименование</th>
-      <th>Доход/расход</th>
-      <th>Действия</th>
+      <th>Name</th>
+      <th>Income/Expence</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -17,13 +17,13 @@
       <tr>
         <td><%= category.name %></td>
         <% if category.is_income == 1 %>
-            <td>Доходы</td>
+            <td>Incomes</td>
         <% else %>
-            <td>Расходы</td>
+            <td>Expences</td>
         <% end %>
         <td>
-          <%= link_to 'Редактировать', edit_category_path(category) %>
-          <%= link_to 'Удалить', category, method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Edit', edit_category_path(category) %>
+          <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

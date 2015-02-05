@@ -1,15 +1,15 @@
-<h1>Список транзакций <%= @anc %></h1>
+<h1>Transactions list <%= @anc %></h1>
 <p id="links">
-  <span><%= link_to 'Добавить новую запись', new_income_path %></span>
-  <span><%= link_to 'На главную', controller: "home", action: "index" %></span>
+  <span><%= link_to 'Add new Income/expence', new_income_path %></span>
+  <span><%= link_to 'Home', controller: "home", action: "index" %></span>
 </p>
 <table>
   <thead>
     <tr>
-      <th>Основная категория:</th>
-      <th>Наименование:</th>
-      <th>Величина:</th>
-      <th>Действия:</th>
+      <th>Main category:</th>
+      <th>Name:</th>
+      <th>Amount:</th>
+      <th>Actions:</th>
     </tr>
   </thead>
 
@@ -24,8 +24,8 @@
         <td><%= link_to income.name, controller: "incomes", action: "index", i_name: income.name %>
         <td><%= income.cost %></td>
         <td>
-          <%= link_to 'Редактировать', edit_income_path(income) %>
-          <%= link_to 'Удалить', income, method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Edit', edit_income_path(income) %>
+          <%= link_to 'Delete', income, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
