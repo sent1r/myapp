@@ -2,7 +2,7 @@ class ReportController < ApplicationController
   before_filter :authenticate_user!
   @@reports = nil
 
-  #Установка граничных дат для отчета
+  #setting a period of report
   def index
     @report = ''
     if @@reports.nil?
@@ -13,16 +13,16 @@ class ReportController < ApplicationController
       @date_to = @@reports[:date_to].to_s+' 23:59:59'
     end
 
-    #Сбрасываю переменную, чтобы исключить запоминание ранее введенных данных
+    #Unset the variable to clean memory
     @@reports = nil
 
-    #Выбираю строки, относящиеся только к расходам/доходам
-    @in_incomes = Income.joins(:category).where("categories.is_income = 1 AND incomes.created_at > ? AND
+    #Only Incomes or only expences
+    @in_incomes = Income1.joins(:category).where("categories.is_income = 1 AND incomes.created_at > ? AND
     incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
     @out_incomes = Income.joins(:category).where("categories.is_income = 2 AND incomes.created_at > ? AND
     incomes.created_at < ? AND incomes.user_id=?", @date_from, @date_to, current_user.id)
 
-    #Произвожу расчет суммы всех расходов/доходов
+    #Summing all amounts of incomes or expences
     @out_sum = 0
       @out_incomes.each do |income|
         @out_sum += income.cost
@@ -33,7 +33,7 @@ class ReportController < ApplicationController
       end
   end
 
-  #Использую глобальную переменную для передачи даныых из формы из одного метода в другой
+  #@@reports used to send params in to index controller
   def create
     @@reports = params
     redirect_to :controller=>'report', :action => 'index'

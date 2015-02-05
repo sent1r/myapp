@@ -6,16 +6,16 @@ class IncomesController < ApplicationController
 
   #@ncomes variable includes only incomes data, expences data, transactions with the same name
   #@anc variable includes information about active page and action for viewer
-  #@@mycat includes category name which are recived from table categories by id
+  #@@mycat includes category name which are recieved from table categories by id
   def index
     if params[:in_out] == "1"
-      @incomes = Income.joins(:category).where("categories.is_income = ?", 1).where(user_id: current_user.id)
+      @incomes = Income.joins(:category).where("categories.is_income = 1").where(user_id: current_user.id)
       @anc = "(Incomes)"
-      @@mycat = Category.where("categories.is_income = ?", 1).where(user_id: current_user.id)
+      @@mycat = Category.where("categories.is_income = 1").where(user_id: current_user.id)
     elsif params[:in_out] == "2"
-      @incomes = Income.joins(:category).where("categories.is_income = ?", 2).where(user_id: current_user.id)
+      @incomes = Income.joins(:category).where("categories.is_income = 2").where(user_id: current_user.id)
       @anc = "(Expences)"
-      @@mycat = Category.where("categories.is_income = ?", 2).where(user_id: current_user.id)
+      @@mycat = Category.where("categories.is_income = 2").where(user_id: current_user.id)
     elsif params[:i_name]
       @incomes = Income.where(name: params[:i_name], user_id: current_user.id)
     else
@@ -40,14 +40,25 @@ class IncomesController < ApplicationController
     else
       @cat = Category.where(user_id: current_user.id)
     end
+
     respond_with(@income)
   end
 
   def edit
-    @cat = Category.where(user_id: current_user.id)
+    if @@mycat
+      @cat = @@mycat
+    else
+      @cat = Category.where(user_id: current_user.id)
+    end
   end
 
   def create
+    if @@mycat
+      @cat = @@mycat
+    else
+      @cat = Category.where(user_id: current_user.id)
+    end
+
     @income = Income.new(income_params)
     @income.user_id = current_user.id if current_user
     @income.save
