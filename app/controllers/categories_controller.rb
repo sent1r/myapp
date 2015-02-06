@@ -74,4 +74,5 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:user_id, :name, :is_income)
     end
+
 end
