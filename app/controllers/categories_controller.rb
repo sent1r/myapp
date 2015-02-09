@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   #Every user can see only his categories, Incomes and expences. We use current_user for these purposes
   def index
-    @categories = Category.where(user_id: current_user)
+    @categories = Category.where(user_id: current_user.id)
   end
 
   # GET /categories/1
